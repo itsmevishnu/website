@@ -1,0 +1,312 @@
+﻿$(document).ready(function () {
+    page_click();
+    text_chage();
+    page_change();
+    fill_details();
+
+    $('#DetailsOfProcedure').on("keyup keydown paste change", function (e) {
+        var words = $.trim(this.value).split(/\s+/)
+        if (words.length > 100) {
+            $("#facultyerror").text("Only " + 100 + " words are allowed.");
+        } else {
+            var bi = $('#DetailsOfProcedure').val().replace(/&/g, 'and').replace(/'/g, "`");
+            $('#DetailsOfProcedure').val(bi);
+            console.log($('#DetailsOfProcedure').val());
+            $("#facultyerror").text("")
+        }
+    });
+
+    $('#DetailsOfIncentives').on("keyup keydown paste change", function (e) {
+        var words = $.trim(this.value).split(/\s+/)
+        if (words.length > 100) {
+            $("#facultyerrora").text("Only " + 100 + " words are allowed.");
+        } else {
+            var bi = $('#DetailsOfIncentives').val().replace(/&/g, 'and').replace(/'/g, "`");
+            $('#DetailsOfIncentives').val(bi);
+            console.log($('#DetailsOfIncentives').val());
+            $("#facultyerrora").text("")
+        }
+    });
+
+    $('#IncentiveStructures').on("keyup keydown paste change", function (e) {
+        var words = $.trim(this.value).split(/\s+/)
+        if (words.length > 100) {
+            $("#facultyerrorb").text("Only " + 100 + " words are allowed.");
+        } else {
+            var bi = $('#IncentiveStructures').val().replace(/&/g, 'and').replace(/'/g, "`");
+            $('#IncentiveStructures').val(bi);
+            console.log($('#IncentiveStructures').val());
+            $("#facultyerrorb").text("")
+        }
+    });
+
+    $('#AllowanceOfFaculty').on("keyup keydown paste change", function (e) {
+        var words = $.trim(this.value).split(/\s+/)
+        if (words.length > 100) {
+            $("#facultyerrorc").text("Only " + 100 + " words are allowed.");
+        } else {
+            var bi = $('#AllowanceOfFaculty').val().replace(/&/g, 'and').replace(/'/g, "`");
+            $('#AllowanceOfFaculty').val(bi);
+            console.log($('#AllowanceOfFaculty').val());
+            $("#facultyerrorc").text("")
+        }
+    });
+
+    $('#FacultyEmpowerStrategy').on("keyup keydown paste change", function (e) {
+        var words = $.trim(this.value).split(/\s+/)
+        if (words.length > 100) {
+            $("#facultyerrord").text("Only " + 100 + " words are allowed.");
+        } else {
+            var bi = $('#FacultyEmpowerStrategy').val().replace(/&/g, 'and').replace(/'/g, "`");
+            $('#FacultyEmpowerStrategy').val(bi);
+            console.log($('#FacultyEmpowerStrategy').val());
+            $("#facultyerrord").text("")
+        }
+    });
+
+    $('#AnyOther').on("keyup keydown paste change", function (e) {
+        var words = $.trim(this.value).split(/\s+/)
+        if (words.length > 100) {
+            $("#facultyerrore").text("Only " + 100 + " words are allowed.");
+        } else {
+            var bi = $('#AnyOther').val().replace(/&/g, 'and').replace(/'/g, "`");
+            $('#AnyOther').val(bi);
+            console.log($('#AnyOther').val());
+            $("#facultyerrore").text("")
+        }
+    });
+   
+});
+
+function page_click() {
+    $('#btnSave').on('click', function (e) {
+        e.preventDefault();
+        var frm = $('#frm');
+        var frmParsley = frm.parsley();
+        frmParsley.validate();
+        if (!frm.parsley().isValid()) {
+            return false;
+        }
+        var btn = $(this);
+        var oldText = btn.text();
+        btn.addClass('disabled');
+        btn.attr('disabled');
+        btn.text('Processing...');
+        var AppraisalConductedBy = $('input[name="AppraisalConductedBy"]:checked').attr('data-value');
+        $.ajax({
+            method: 'POST',
+            url: $('#hdfBaseUrl').val() + 'Institute/Peoples/SaveFacultyDetails',
+            data: frm.serialize() + '&AppraisalConductedBy=' + AppraisalConductedBy,
+        }).done(function (data) {
+            if (data['c'] == 'success') {
+                PopupMessageCallBack('Success', data['m'], function () {
+                    btn.text(oldText);
+                    btn.removeAttr('disabled');
+                    btn.removeClass('disabled');
+                });
+            } else if (data['c'] == 'sessionexpired') {
+                PopupMessage('Error', data['m']);
+                btn.text(oldText);
+                btn.removeAttr('disabled');
+                btn.removeClass('disabled');
+            } else if (data['c'] == 'servererror') {
+                PopupMessage('Error', data['m']);
+                btn.text(oldText);
+                btn.removeAttr('disabled');
+                btn.removeClass('disabled');
+            }
+            btn.removeClass('disabled');
+            btn.removeAttr('disabled');
+            btn.text(oldText);
+        });
+        btn.removeClass('disabled');
+        btn.removeAttr('disabled');
+        btn.text(oldText);
+    });
+}
+
+function page_change() {
+    $('#fuUploadDocument').on('change', function () {
+        var fu = $(this);
+        var id = fu.attr('data-id');
+        upload_doc(fu, $('#lbl' + id), $('#btn' + id), id)
+    });
+    $('#fuUploadDocument1').on('change', function () {
+        var fu = $(this);
+        var id = fu.attr('data-id');
+        upload_doc(fu, $('#lbl' + id), $('#btn' + id), id)
+    });
+    $('#fuUploadDocument2').on('change', function () {
+        var fu = $(this);
+        var id = fu.attr('data-id');
+        upload_doc(fu, $('#lbl' + id), $('#btn' + id), id)
+    });
+    $('#fuUploadDocument3').on('change', function () {
+        var fu = $(this);
+        var id = fu.attr('data-id');
+        upload_doc(fu, $('#lbl' + id), $('#btn' + id), id)
+    });
+}
+
+function text_chage() {
+    $(document).ready(function () {
+        $('#FacultyAppraisalConductedOther').on('click', function () {
+            var chk = $(this);
+            if (chk.is(':checked')) {
+                $('.divFacultyAppraisalConductedOther').show();
+            } else {
+                $('.divFacultyAppraisalConductedOther').hide();
+            }
+        });
+    });
+} 
+
+function fill_details()
+{
+    $.ajax({
+        method: 'GET',
+        url: $('#hdfBaseUrl').val() + 'Institute/Peoples/SelectFacultyDetails'
+    }).done(function (data) {
+        $.each(data["List"], function (index, item) {
+            $('#hfID').val(item['ID']);
+            $('#IsFacultyAvailable').val(item['IsFacultyAvailable']);
+            $('#IsProportionOfPermanent').val(item['IsProportionOfPermanent']);
+            $('#DetailsOfProcedure').val(item['DetailsOfProcedure']);
+            $('#hdn1').val(item['IncentivesUploadDocuments']);
+            $('#DetailsOfIncentives').val(item['DetailsOfIncentives']);
+            $('#Isdeployingcontractualfaculty').val(item['Isdeployingcontractualfaculty']);
+            
+            $('#IncentiveStructures').val(item['IncentiveStructures']);
+            $('#AllowanceOfFaculty').val(item['AllowanceOfFaculty']);
+
+            if (item['Selfappraisal'] == "True")
+                $('#self').attr('checked', 'checked');
+
+            if (item['PeerReview'] == "True")
+                $('#peer').attr('checked', 'checked');
+
+            if (item['StudentsEvaluation'] == "True")
+                $('#students').attr('checked', 'checked');
+
+            if (item['OtherSpecify'] == "True")
+                $('#FacultyAppraisalConductedOther').attr('checked', 'checked');
+
+            
+
+            $('#Other').val(item['Other']);
+            $('#RatioOfStaff').val(item['RatioOfStaff']);
+            $('#FacultyEmpowerStrategy').val(item['FacultyEmpowerStrategy']);
+            $('#IsStaffPaidAsGovtNorms').val(item['IsStaffPaidAsGovtNorms']);
+            $('#AnyOther').val(item['AnyOther']);
+            $('#Isdeployingcontractualfaculty').val(item['Isdeployingcontractualfaculty']);
+            if (item['IncentivesUploadDocuments'] != '') {
+                $('#IncentivesUploadDocuments').val(item['IncentivesUploadDocuments']);
+                $('#btnIncentivesUploadDocuments').show().attr('href', $('#hdfBaseUrl').val() + item['IncentivesUploadDocuments']);
+                $('#fuUploadDocument').removeAttr('required');
+            }
+            if (item['AllowanceUploadDocuments'] != '') {
+                $('#AllowanceUploadDocuments').val(item['AllowanceUploadDocuments']);
+                $('#btnAllowanceUploadDocuments').show().attr('href', $('#hdfBaseUrl').val() + item['AllowanceUploadDocuments']);
+                $('#fuUploadDocument1').removeAttr('required');
+            }
+            if (item['IncentivesStructureUploadDocuments'] != '') {
+                $('#IncentivesStructureUploadDocuments').val(item['IncentivesStructureUploadDocuments']);
+                $('#btnIncentivesStructureUploadDocuments').show().attr('href', $('#hdfBaseUrl').val() + item['IncentivesStructureUploadDocuments']);
+                $('#fuUploadDocument2').removeAttr('required');
+            }
+            if (item['ProcedureUploadDocuments'] != '') {
+                $('#ProcedureUploadDocuments').val(item['ProcedureUploadDocuments']);
+                $('#btnProcedureUploadDocuments').show().attr('href', $('#hdfBaseUrl').val() + item['ProcedureUploadDocuments']);
+                $('#fuUploadDocument3').removeAttr('required');
+            }
+            if (item['OtherSpecify'] == "True") {
+                $('.divFacultyAppraisalConductedOther').show();
+            } else {
+                $('.divFacultyAppraisalConductedOther').hide();
+            }
+            
+        });
+        //if (data["HasNewAchivements"] == "Yes") {
+        //    $('#btnSave').remove();
+        //    $('#frm').find('input').attr('disabled', true);
+        //    $('#frm').find('input').removeAttr('name');
+        //    $('#frm').find('select').attr('disabled', true);
+        //    $('#frm').find('select').removeAttr('name');
+        //    $('#frm').find('textarea').attr('disabled', true);
+        //    $('#frm').find('textarea').removeAttr('name');
+        //}
+    });
+}
+
+function upload_doc(fileControl, p, btnView, id) {
+    fileUpload = fileControl.get(0);
+
+    if (window.FormData !== undefined) {
+        if (fileControl.get(0).files.length > 0) {
+            var FileSize = fileControl.get(0).files[0].size;
+              var fileExtension = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpeg', 'jpg', 'png'];
+            if ($.inArray(fileControl.val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                PopupMessage('Error', "Only formats are allowed : " + fileExtension.join(', '))
+                return false;
+            }
+            if ("5242880" >= FileSize) {
+
+            } else {
+                PopupMessage('Error', "Only 5 Mb file size allow!")
+                return false;
+            }
+        } else {
+            PopupMessage('Error', "Please Upload Proper File!")
+            return false;
+        }
+    } else {
+        PopupMessage('Error', "Please Upload Proper File!")
+        return false;
+    }
+
+    var files = fileUpload.files;
+    // Create FormData object  
+    var fileData = new FormData();
+    // Looping over all files and add it to FormData object  
+    fileData.append('id', id);
+    for (var i = 0; i < files.length; i++) {
+        fileData.append(files[i].name, files[i]);
+    }
+    $.ajax({
+        method: 'POST',
+        url: $('#hdfBaseUrl').val() + 'Institute/Peoples/UploadDoc',
+        data: fileData,
+        async: true,
+        cache: false,
+        contentType: false, // Not to set any content header  
+        processData: false,
+        xhr: function () {
+            var xhr = $.ajaxSettings.xhr();
+            xhr.upload.onprogress = function (e) {
+                var percentComplete = Math.round(e.loaded / e.total * 100);
+                if (percentComplete < 100)
+                    p.text('' + percentComplete + '% Completed');
+                else
+                    p.text('Saving file...');
+            };
+            return xhr;
+        }
+    }).done(function (data) {
+        p.text('Choose file');
+        if (data['c'] == 'success') {
+            btnView.show().attr('href', $('#hdfBaseUrl').val() + data['p']);
+            fileControl.removeAttr('required');
+
+            $('#' + id).val(data['p']);
+        } else if (data['c'] == 'alreadyexists') {
+            PopupMessage('Error!', data['m']);
+        } else if (data['c'] == 'sessionexpired') {
+            PopupMessage('Error!', data['m']);
+        } else if (data['c'] == 'servererror') {
+            PopupMessage('Error!', data['m']);
+        }
+        fileControl.val('');
+    }).error(function () {
+        ErrorMessage('Processing error. Kindly refresh page and try again!');
+    });
+}

@@ -1,0 +1,24 @@
+﻿function PopupMessageCallBack(t, m, c) {
+    var i = 'PopupMessageCallBack';
+    $('#' + i + 'Title').text(t),
+        $('#' + i + 'Body').html(m),
+        $('#' + i + 'BtnOk').on('click', function () {
+            c(), $('#' + i + '').modal('hide')
+        }),
+        $('#' + i + '').modal('show')
+}
+function PopupMessage(t, m) {
+    var i = 'PopupMessage';
+    $('#' + i + 'Title').text(t),
+        $('#' + i + 'Body').text(m);
+    $('#' + i + '').modal('show')
+}
+function ConfirmMessageCallBack(m, c) {
+    var i = 'ConfirmPopupMessage';
+    $('#' + i + 'Body').text(m),
+        $('#' + i + 'BtnConfirm').unbind('click');
+    $('#' + i + 'BtnConfirm').on('click', function () {
+        c(), $('#' + i + '').modal('hide')
+    }),
+        $('#' + i + '').modal('show')
+}

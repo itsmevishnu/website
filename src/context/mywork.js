@@ -62,7 +62,7 @@ const works = [
     {
       "id": 7,
       "title": "GIS Mapathon",
-      "description": "IIT B along with ISRO had conducted a Mapathon competetion. I have analaysed COVID impact and number of COVID hospitals in Karnataka district with the help of QGIS, and Python web scrapping. My project got 140th Rank out of 5000+ entries",
+      "description": "IIT B along with ISRO had conducted a Mapathon competetion. I have analaysed COVID impact and number of COVID hospitals in Karnataka state with the help of QGIS, and Python web scrapping. My project got 140th Rank out of 5000+ entries",
       "technologies": "GIS",
       'img' : 'gis_mapathon.png',
       "year": 2020,

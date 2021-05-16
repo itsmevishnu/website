@@ -52,7 +52,7 @@ const interests = [
     "id": 8,
     "icon": "ion-ios-lightbulb",
     "title": "Learning",
-    "description": "I want to learn something new-programming, riding tricks, music.. Everyday. To brush up my skills.",
+    "description": "I want to learn something new-programming, riding tricks, music.. Everyday to brush up my skills.",
     "": ""
   },
   {
@@ -60,6 +60,13 @@ const interests = [
     "icon": "ion-pizza",
     "title": "Cooking",
     "description": "I got an opportunity to learn and do the cooking. I am very passionate about making new dishes and serve to friends and family.",
+    "": ""
+  },
+  {
+    "id": 10,
+    "icon": "ion-leaf",
+    "title": "Gardening",
+    "description": "I am always wonder the to see the greenery around the me. I love to nurish a colour full garden. I have a small garden in my room. ",
     "": ""
   }
 ];

@@ -42,12 +42,17 @@ const skills = [
       {
         "id": 9,
         "skill": "Datascience",
-        "value": 20
+        "value": 50
       },
       {
         "id": 10,
         "skill": "GIS",
         "value": 40
+      },
+      {
+        "id": 11,
+        "skill": "MS office",
+        "value": 75
       }
 ];
 

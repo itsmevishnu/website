@@ -66,7 +66,7 @@ const interests = [
     "id": 10,
     "icon": "ion-leaf",
     "title": "Gardening",
-    "description": "I am always wonder the to see the greenery around the me. I love to nurish a colour full garden. I have a small garden in my room. ",
+    "description": "I  always like  to see the greenery around me. I love to nurish a colour full garden. I have a small indoor garden in my room. ",
     "": ""
   }
 ];

@@ -22,7 +22,7 @@ const skills = [
       {
         "id": 5,
         "skill": "React",
-        "value": 70
+        "value": 60
       },
       {
         "id": 6,

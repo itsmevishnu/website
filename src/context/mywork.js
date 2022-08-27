@@ -99,6 +99,26 @@ const works = [
       "url": "https://gnr-629.github.io/gnr629/",
       'category': "gis"
     },
+    {
+      "id": 11,
+      "title": "Performance of Public Distribution System in Maharashtra",
+      "description": "Analysed the performance of the Targeted Public Distribution System of Maharashtra from secondary data and scholarly articles by understanding the working, history, importance etc of TPDS.",
+      "technologies": "others",
+      'img' : 'mtp1.png',
+      "year": 2021,
+      "url": "https://sites.google.com/view/ctara-admission-2020/home",
+      'category': "others"
+    },
+    {
+      "id": 12,
+      "title": "Geospatial Evaluation of TPDS in Palghar",
+      "description": "Analysed the performance of TPDS of Palghar district, Maharashtra, by collecting data of 16 parameters.",
+      "technologies": "GIS, ML",
+      'img' : 'mtp2.png',
+      "year": 2022,
+      "url": "https://gnr-629.github.io/gnr629/",
+      'category': "gis ml"
+    },
     
   ];
 

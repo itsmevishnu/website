@@ -7,12 +7,12 @@ const my_info = [
     {
         'id': 2,
         'field': 'Profile',
-        'value': 'Student/ Software Engineer',
+        'value': 'Backend Developer/Full Stack Developer/ ML Engineer'
     },
     {
         'id': 3,
         'field': 'Email 1',
-        'value': 'vishnu.j@iitb.ac.in'
+        'value': 'vishnu.jn@outlook.com'
     },
     {
         'id': 4,
@@ -40,12 +40,12 @@ const social_media = [
         'url': 'https://github.com/itsmevishnu',
         'icon' : 'ion-social-github'
     },
-    {
-        'id': 3,
-        'name': 'Instagram',
-        'url': 'https://www.instagram.com/vishnu.jayan92/',
-        'icon' : 'ion-social-instagram'
-    },
+    // {
+    //     'id': 3,
+    //     'name': 'Instagram',
+    //     'url': 'https://www.instagram.com/vishnu.jayan92/',
+    //     'icon' : 'ion-social-instagram'
+    // },
 
 ];
 
@@ -53,7 +53,7 @@ const contact_info = [
     {
         'id': 1,
         'field': 'Email 1',
-        'value': 'vishnu.j@iitb.ac.in',
+        'value': 'vishnu.jn@outlook.com',
         'icon' : 'ion-email'
     },
     {
@@ -71,15 +71,15 @@ const contact_info = [
     {
         'id': 4,
         'field': 'Address',
-        'value': 'CTARA, IIT Bombay, Mumbai 40076',
+        'value': 'IIT Bombay, Mumbai 40076',
         'icon' : 'ion-ios-location'
     },
-    {
-        'id': 5,
-        'field': 'Address',
-        'value': 'IoE Cell, IIT Bombay, Mumbai 40076',
-        'icon' : 'ion-ios-location'
-    },
+    // {
+    //     'id': 5,
+    //     'field': 'Address',
+    //     'value': 'IoE Cell, IIT Bombay, Mumbai 40076',
+    //     'icon' : 'ion-ios-location'
+    // },
  
    
 ]

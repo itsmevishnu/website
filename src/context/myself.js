@@ -5,7 +5,7 @@ const myself =[
     },
     {
         'id' :2,
-        'para':'I am doing my post graduation in Technology development, from Centre for Technology Alternatives for Rural Areas(CTARA), IIT Bombay and I have graduated on Computer science and engineering from Kerala University in 2014'
+        'para':'I completed my post graduation in Technology development, from Centre for Technology Alternatives for Rural Areas(CTARA), IIT Bombay'
     },
     {
         'id' :3,

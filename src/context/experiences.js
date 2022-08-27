@@ -1,10 +1,18 @@
 const experiences = [
+  {
+    "id": 5,
+    "post": "Software engineer",
+    "company": "Uplers, Mumbai, IN",
+    "from": 2022,
+    "to": "()",
+    "tasks": "Python Backend developer, React Developer, ML Engineer"
+  },
     {
       "id": 1,
       "post": "Software engineer",
       "company": "IIT Bombay, Mumbai, IN",
       "from": 2018,
-      "to": "(Cont.)",
+      "to": "2022",
       "tasks": "SAP FICO/MM, Managing and co-ordinating auditing process"
     },
     {

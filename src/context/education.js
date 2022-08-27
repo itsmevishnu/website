@@ -4,7 +4,7 @@ const education = [
       "course": "M Tech in Technology Development",
       "university": "IIT Bombay, Mumbai, IN",
       "from": 2019,
-      "to": 2021,
+      "to": 2022,
       "learning": "GIS, Datascience, Data visualisation technology, Literature review, Solar plant designing"
     },
     {

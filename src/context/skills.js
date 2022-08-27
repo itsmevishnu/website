@@ -17,17 +17,17 @@ const skills = [
       {
         "id": 4,
         "skill": "Django",
-        "value": 75
+        "value": 80
       },
       {
         "id": 5,
         "skill": "React",
-        "value": 60
+        "value": 70
       },
       {
         "id": 6,
         "skill": "SAP MM/FICO",
-        "value": 30
+        "value": 40
       },
       {
         "id": 7,
@@ -42,17 +42,12 @@ const skills = [
       {
         "id": 9,
         "skill": "Datascience",
-        "value": 50
+        "value": 70
       },
       {
         "id": 10,
         "skill": "GIS",
-        "value": 40
-      },
-      {
-        "id": 11,
-        "skill": "MS office",
-        "value": 75
+        "value": 80
       }
 ];
 
